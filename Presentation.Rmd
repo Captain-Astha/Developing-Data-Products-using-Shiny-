@@ -1,81 +1,30 @@
 ---
-title: "MyApp"
+title: "Untitled"
 author: "Astha"
 date: "2024-11-03"
 output: html_document
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Inputs and Outputs
+## R Markdown
 
-The random number generator in this app makes it simple to select the desired quantity of random numbers, allowing you to choose anywhere from 0 to 1337. This is the app's first step.
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-In the second step, you set minimum and maximum values for the x-axis, selecting a range between -1337 and 1337. The same applies to the y-axis. Using these two axes, you can define the area from which your random numbers will be sampled.
-```library(markdown)
-library(shiny)
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-shinyUI(navbarPage("Random number generator",
-                   tabPanel("Random numbers",
-                            
-                            sidebarLayout(
-                              sidebarPanel(
-                                helpText("Give the number of random numbers to be plotted and adjust the axis "),
-                                numericInput("numeric", "How many random numbers should be plotted?",
-                                             value = 1337, min = 0, max = 1337, step = 1),
-                                sliderInput("xslider", "Pick a minimum and maximum number for the x-axis between -1337 and 1337 if you like",
-                                            -1337, 1337, value = c(-137, 137)),
-                                sliderInput("yslider", "Pick a minimum and maximum number for the y-axis between -1337 and 1337 if you like",
-                                            -1337, 1337, value = c(-137, 137)),
-                                submitButton("Press please")
-                              ),
-                              
-                              mainPanel(
-                                h4("Your own random generated numbers"),
-                                plotOutput("plot1")
-                              )
-                            )
-                   ),
-                   
-                   tabPanel("About random numbers",
-                            mainPanel(
-                              includeMarkdown("about")
-                            )) 
-) 
-) 
+```{r cars}
+summary(cars)
 ```
 
-## Embedded Application
-Of course, we used the Shiny library to build this app, along with Markdown and knitr.
+## Including Plots
 
-I ran into some challenges when trying to add a second button in the main panel (beside "random numbers"). The Shiny app consists of two main parts:
-* `ui` (user interface)
-* `server` (server logic)
+You can also embed plots, for example:
 
-Initially, I planned to include an “about” file containing information on the methods used. This file is in RMD format, and while it worked perfectly locally, I couldn't find a smooth way to integrate it into the app.
-
-
-```library(shiny)
-shinyServer(function(input, output) {
-  output$plot1 <- renderPlot({ par(bg = "lightblue", fg = "purple", col = "yellow")
-    set.seed(1337)
-    numberpoints <- input$numeric
-    minx <- input$xslider[1]
-    maxx <- input$xslider[2]
-    miny <- input$yslider[1]
-    maxy <- input$yslider[2]
-    datax <- runif(numberpoints, minx, maxx)
-    datay <- runif(numberpoints, miny, maxy)
-    plot(datax, datay, xlab = " random number on x axis", ylab = " random number on y axis", main = "Random numbers generated",
-         xlim = c(-1337, 1337), ylim = c(-1337, 1337))
-  })
-  
-})
+```{r pressure, echo=FALSE}
+plot(pressure)
 ```
 
-
-
-
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
