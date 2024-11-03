@@ -1,0 +1,18 @@
+---
+title: "Untitled"
+author: "Astha"
+date: "2024-11-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+This app primarily serves as a capstone project for the Coursera course, "Developing Data Products." Additionally, it provides a basic tool for generating pseudo-random numbers.
+
+To use it, start by entering or sliding to choose the number of random values you want (between 0 and 1337). Then, use the next two sliders to set the minimum and maximum values for the x and y axes, defining the range within which the initial random values will be sampled.
+
+Once everything is set, simply click the "Press Please" button to generate the numbers.
+
